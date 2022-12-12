@@ -15,10 +15,14 @@ stdenv.mkDerivation {
   # Wierd because prefix isn't set until makefile is run.
   # Other scripts use configure to set the prefix, but sc seems to not accept
   # the `--prefix` argument in the configure script.
-  installFlags=[ "prefix=$(out)"];
+  installFlags = [ "prefix=$(out)" ];
+
   # configurePhase = "mkdir -p $out; ./configure";
   configurePhase = "./configure";
-  outputs = [ "out" ];
+
+  # man is handled via https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/multiple-outputs.sh
+  outputs = [ "out" "man" ];
+
   meta = with lib; {
     description = "Curses-based spreadsheet calculator.";
 
