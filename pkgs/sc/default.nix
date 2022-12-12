@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, ncurses, yacc }:
+{ stdenv, fetchFromGitHub, ncurses, yacc, lib }:
 stdenv.mkDerivation {
   pname = "sc";
   version = "git";
@@ -19,4 +19,22 @@ stdenv.mkDerivation {
   # configurePhase = "mkdir -p $out; ./configure";
   configurePhase = "./configure";
   outputs = [ "out" ];
+  meta = with lib; {
+    description = "Curses-based spreadsheet calculator.";
+
+    longDescription = ''
+      This is a fork of the old sc-7.16 application with attention paid to
+      reduced compiler warnings, bugfixes, and functionality improvements
+      (e.g. mouse suport, configurability via .scrc).
+      See CHANGES-git or README.md for a full list of changes.
+    '';
+
+    homepage = "https://github.com/n-t-roff/sc";
+
+    # Unsure if n-t-roff considers thier work public domain, no license found
+    license = licenses.publicDomain;
+
+    # Might not work on windows, but I do see DOS support in source.
+    platforms = platforms.all;
+  };
 }
