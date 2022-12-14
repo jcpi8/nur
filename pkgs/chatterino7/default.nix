@@ -2,6 +2,7 @@
 # FIXME fetchFromGithub is supposed to use fetchgit as a fallback
 #       Doesn't work.
 # , fetchFromGitHub
+, lib
 , fetchgit
 , openssl
 , boost
@@ -19,4 +20,10 @@ stdenv.mkDerivation {
     fetchSubmodules = true;
   };
   buildInputs = [ openssl boost qt5.full pkg-config cmake ];
+  meta = with lib; {
+    description = "Twitch client, Chatterino2 fork that supports 7TV emotes.";
+    homepage = "https://www.github.com/SevenTV/chatterino7";
+    license = licenses.mit;
+    platforms = platforms.all;
+  };
 }
