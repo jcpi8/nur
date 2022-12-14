@@ -1,18 +1,16 @@
 { stdenv
-, lib
 # FIXME fetchFromGithub is supposed to use fetchgit as a fallback
+#       Doesn't work.
 # , fetchFromGitHub
 , fetchgit
 , openssl
 , boost
 , qt5
 , pkg-config
-, cmake
-}:
+, cmake }:
 stdenv.mkDerivation {
   name = "chatterino7";
   version = "v7.4.0";
-
   #src = fetchFromGitHub {
   src = fetchgit {
     url = "https://github.com/SevenTV/chatterino7";
@@ -21,6 +19,4 @@ stdenv.mkDerivation {
     fetchSubmodules = true;
   };
   buildInputs = [ openssl boost qt5.full pkg-config cmake ];
-  # buildPhase = "cmake $src; make";
-
 }
