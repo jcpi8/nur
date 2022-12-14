@@ -25,5 +25,8 @@ stdenv.mkDerivation {
     homepage = "https://www.github.com/SevenTV/chatterino7";
     license = licenses.mit;
     platforms = platforms.all;
+    broken = true;
+    # QtWebkit upstream is unmaintained and receives no security updates, see
+    # https://blogs.gnome.org/mcatanzaro/2022/11/04/stop-using-qtwebkit/
   };
 }
