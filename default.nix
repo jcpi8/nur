@@ -7,4 +7,5 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   sc = pkgs.callPackage ./pkgs/sc { };
+  chatterino7 = pkgs.callPackage ./pkgs/chatterino7 { };
 }
