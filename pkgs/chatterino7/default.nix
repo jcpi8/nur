@@ -3,7 +3,6 @@
 #       Doesn't work.
 # , fetchFromGitHub
 , lib
-, fetchgit
 , fetchFromGitHub
 , openssl
 , qttools
@@ -13,7 +12,6 @@
 , qtmultimedia
 , pkg-config
 , wrapQtAppsHook
-, qmake
 , cmake }:
 stdenv.mkDerivation rec {
   pname = "chatterino7";
