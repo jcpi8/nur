@@ -1,15 +1,21 @@
-{ stdenv
+{ mkDerivation
 # FIXME fetchFromGithub is supposed to use fetchgit as a fallback
 #       Doesn't work.
 # , fetchFromGitHub
+, qtbase
+, qtsvg
+, qtmultimedia
+, qmake
+, wrapQtAppsHook
 , lib
 , fetchgit
 , openssl
 , boost
-, qt5
-, pkg-config
-, cmake }:
-stdenv.mkDerivation {
+, cmake
+, stdenv
+# , qt5
+, pkg-config }:
+mkDerivation {
   name = "chatterino7";
   version = "v7.4.0";
   #src = fetchFromGitHub {
@@ -19,7 +25,8 @@ stdenv.mkDerivation {
     sha256 = "sha256-F0Cs115C/N9Ul5L992e6Jwe976Pk2Qy6ZKIUA4RVgDg=";
     fetchSubmodules = true;
   };
-  buildInputs = [ openssl boost qt5.full pkg-config cmake ];
+  nativeBuildInputs = [ qmake pkg-config wrapQtAppsHook ];
+  buildInputs = [ openssl boost qtbase qtsvg qtmultimedia ];
   meta = with lib; {
     description = "Twitch client, Chatterino2 fork that supports 7TV emotes.";
     homepage = "https://www.github.com/SevenTV/chatterino7";

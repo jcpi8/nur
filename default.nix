@@ -7,5 +7,5 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   sc = pkgs.callPackage ./pkgs/sc { };
-  chatterino7 = pkgs.callPackage ./pkgs/chatterino7 { };
+  chatterino7 = pkgs.libsForQt5.callPackage ./pkgs/chatterino7 { };
 }
