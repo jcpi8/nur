@@ -8,5 +8,4 @@
 
   sc = pkgs.callPackage ./pkgs/sc { };
   chatterino7 = pkgs.libsForQt5.callPackage ./pkgs/chatterino7 { };
-  chatterino2 = pkgs.libsForQt5.callPackage ./pkgs/chatterino2 { };
 }
