@@ -1,32 +1,34 @@
-{ mkDerivation
+{ stdenv
 # FIXME fetchFromGithub is supposed to use fetchgit as a fallback
 #       Doesn't work.
 # , fetchFromGitHub
+, lib
+, fetchgit
+, fetchFromGitHub
+, openssl
+, boost
 , qtbase
 , qtsvg
 , qtmultimedia
-, qmake
+, pkg-config
 , wrapQtAppsHook
-, lib
-, fetchgit
-, openssl
-, boost
-, cmake
-, stdenv
-# , qt5
-, pkg-config }:
-mkDerivation {
-  name = "chatterino7";
-  version = "v7.4.0";
-  #src = fetchFromGitHub {
-  src = fetchgit {
-    url = "https://github.com/SevenTV/chatterino7";
-    rev = "v7.4.0";
+, qmake
+, cmake }:
+stdenv.mkDerivation rec {
+  pname = "chatterino7";
+  version = "7.4.0";
+  src = fetchFromGitHub {
+  # src = fetchgit {
+    owner= "SevenTV";
+    repo = pname;
+    # url = "https://github.com/SevenTV/chatterino7";
+    rev = "v${version}";
     sha256 = "sha256-F0Cs115C/N9Ul5L992e6Jwe976Pk2Qy6ZKIUA4RVgDg=";
     fetchSubmodules = true;
   };
-  nativeBuildInputs = [ qmake pkg-config wrapQtAppsHook ];
-  buildInputs = [ openssl boost qtbase qtsvg qtmultimedia ];
+  qmakeFlags = "-makefile";
+  nativeBuildInputs = [ pkg-config wrapQtAppsHook ];
+  buildInputs = [ cmake qtbase qtsvg qtmultimedia openssl boost  ];
   meta = with lib; {
     description = "Twitch client, Chatterino2 fork that supports 7TV emotes.";
     homepage = "https://www.github.com/SevenTV/chatterino7";
