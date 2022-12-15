@@ -1,7 +1,4 @@
 { stdenv
-# FIXME fetchFromGithub is supposed to use fetchgit as a fallback
-#       Doesn't work.
-# , fetchFromGitHub
 , lib
 , fetchFromGitHub
 , openssl
@@ -17,10 +14,8 @@ stdenv.mkDerivation rec {
   pname = "chatterino7";
   version = "7.4.0";
   src = fetchFromGitHub {
-  # src = fetchgit {
     owner= "SevenTV";
     repo = pname;
-    # url = "https://github.com/SevenTV/chatterino7";
     rev = "v${version}";
     sha256 = "sha256-F0Cs115C/N9Ul5L992e6Jwe976Pk2Qy6ZKIUA4RVgDg=";
     fetchSubmodules = true;
