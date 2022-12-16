@@ -34,5 +34,8 @@ stdenv.mkDerivation rec {
     # After viewing the chatterino2 package, it seems like I'm missing some of
     # the niceties offered to MacOS.
     platforms = platforms.linux;
+    # 7TV emotes do not show up, more testing is needed.
+    broken = true;
+
   };
 }
