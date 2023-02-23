@@ -6,22 +6,25 @@
 , boost
 , qtbase
 , qtsvg
+, qtimageformats
 , qtmultimedia
 , pkg-config
 , wrapQtAppsHook
-, cmake }:
+, cmake
+, libsecret }:
 stdenv.mkDerivation rec {
   pname = "chatterino7";
-  version = "7.4.0";
+  version = "7.4.1";
   src = fetchFromGitHub {
     owner= "SevenTV";
     repo = pname;
     rev = "v${version}";
-    sha256 = "sha256-F0Cs115C/N9Ul5L992e6Jwe976Pk2Qy6ZKIUA4RVgDg=";
+    # sha256 = "sha256-F0Cs115C/N9Ul5L992e6Jwe976Pk2Qy6ZKIUA4RVgDg=";
+    sha256 = "sha256-AUaG96P2dx4JuJo+vKzurIJmLEjk8mF1a2p0FfTdxfw=";
     fetchSubmodules = true;
   };
-  nativeBuildInputs = [ pkg-config wrapQtAppsHook ];
-  buildInputs = [ cmake qttools qtbase qtsvg qtmultimedia openssl boost ];
+  nativeBuildInputs = [ libsecret pkg-config wrapQtAppsHook ];
+  buildInputs = [ cmake qtimageformats qttools qtbase qtsvg qtmultimedia openssl boost ];
   meta = with lib; {
     description = "Dedicated twitch chat client, with experimental support for 7TV emotes.";
     longDescription = ''
@@ -34,8 +37,5 @@ stdenv.mkDerivation rec {
     # After viewing the chatterino2 package, it seems like I'm missing some of
     # the niceties offered to MacOS.
     platforms = platforms.linux;
-    # 7TV emotes do not show up, more testing is needed.
-    broken = true;
-
   };
 }
