@@ -37,5 +37,6 @@ stdenv.mkDerivation rec {
     # After viewing the chatterino2 package, it seems like I'm missing some of
     # the niceties offered to MacOS.
     platforms = platforms.linux;
+    mainProgram = "chatterino";
   };
 }
