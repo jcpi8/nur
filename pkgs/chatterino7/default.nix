@@ -14,13 +14,12 @@
 , libsecret }:
 stdenv.mkDerivation rec {
   pname = "chatterino7";
-  version = "7.4.1";
+  version = "7.4.2";
   src = fetchFromGitHub {
     owner= "SevenTV";
     repo = pname;
     rev = "v${version}";
-    # sha256 = "sha256-F0Cs115C/N9Ul5L992e6Jwe976Pk2Qy6ZKIUA4RVgDg=";
-    sha256 = "sha256-AUaG96P2dx4JuJo+vKzurIJmLEjk8mF1a2p0FfTdxfw=";
+    sha256 = "sha256-WHdrFUTTuPN+U9BIsE6Ht2EdwIqWfVJzlwDg0Bwvr/w=";
     fetchSubmodules = true;
   };
   nativeBuildInputs = [ libsecret pkg-config wrapQtAppsHook ];
